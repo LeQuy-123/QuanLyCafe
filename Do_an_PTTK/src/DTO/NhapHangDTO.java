@@ -17,6 +17,23 @@ public class NhapHangDTO {
     int soLuong;
     float donGia;
     float thanhTien;
+    int maCTN;
+    int soLuongNhap;
+
+    public int getSoLuongNhap() {
+        return soLuongNhap;
+    }
+
+    public void setSoLuongNhap(int soLuongNhap) {
+        this.soLuongNhap = soLuongNhap;
+    }
+    public int getMaCTN() {
+        return maCTN;
+    }
+
+    public void setMaCTN(int maCTN) {
+        this.maCTN = maCTN;
+    }
 
     public NhapHangDTO() {
     }
@@ -109,11 +126,12 @@ public class NhapHangDTO {
         this.thanhTien = thanhTien;
     }
     
-    public NhapHangDTO(int maHang, int maNCC, String ngayNhap, float thanhTien) {
+    public NhapHangDTO(int maHang, int maNCC, String ngayNhap, float thanhTien, int maCTN) {
         this.maHang = maHang;
         this.maNCC = maNCC;
         this.ngayNhap = ngayNhap;
         this.thanhTien = thanhTien;
+        this.maCTN = maCTN;
     }
 
     public NhapHangDTO(int maNV, int maHang, int maNCC, int sdt, String diaChi, String tenHang, String donVi, String ngayNhap, int soLuong, float donGia, float thanhTien) {

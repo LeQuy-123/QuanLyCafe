@@ -6,8 +6,12 @@
 package BLL;
 
 import DAL.BanHangDAL;
+import DAL.MonDAL;
+import DAL.NguyenLieuDAL;
 import DTO.CTHD_DTO;
 import DTO.HoaDonDTO;
+import DTO.MonDTO;
+import DTO.NguyenLieuDTO;
 import java.sql.ResultSet;
 
 /**
@@ -16,7 +20,9 @@ import java.sql.ResultSet;
  */
 public class QuanLyBH_BLL 
 {
+    MonDAL monDAL = new MonDAL();
     BanHangDAL ql = new BanHangDAL();
+    NguyenLieuDAL nlDAL = new NguyenLieuDAL();
     public ResultSet Check(String str)
     {
         if(str.equals("MaKH"))
@@ -48,6 +54,21 @@ public class QuanLyBH_BLL
     
     public String ThemHD(HoaDonDTO hd, CTHD_DTO cthd)
     {
-        return ql.ThemHD(hd,cthd);
+        int soLuongDat = Integer.parseInt(cthd.getSL());
+        int soLuong = 0;
+        String maMon = cthd.getMaMon();
+        String maNL = monDAL.getMaNguyenLieu(maMon);
+        NguyenLieuDTO nl = nlDAL.getNguyenLieu(Integer.parseInt(maNL));
+        System.out.println(nl.getSlCon());
+//        System.out.println(maNL);
+//        System.out.println(soLuongDat);
+        if(nl.getSlCon() >= soLuongDat){
+            soLuong = nl.getSlCon() - soLuongDat;
+            System.out.println(soLuong);
+            nlDAL.truNguyenLieu(maNL, soLuong);
+            return ql.ThemHD(hd,cthd);
+        } else {
+            return null;
+        }
     }
 }

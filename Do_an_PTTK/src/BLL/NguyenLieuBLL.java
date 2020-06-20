@@ -25,9 +25,9 @@ public class NguyenLieuBLL {
     public boolean removeNL(String maNL){
         return removeNL(maNL);
     }
-    /*public boolean updateNL(int maNL, String tenMon, int Gia, int maMon){
-        return menuDAL.updateMon(maNL, tenMon, Gia, maMon);
-    }*/
+    public ArrayList<NguyenLieuDTO> getTonKho(){
+        return nlDAL.getTonKho();
+    }
     public NguyenLieuDTO getNL(int maNL){
         return nlDAL.getNguyenLieu(maNL);
     }

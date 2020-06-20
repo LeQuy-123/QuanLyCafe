@@ -5,6 +5,7 @@
  */
 package Doan;
 
+import DAL.NhanVienDAL;
 import javax.swing.JFrame;
 
 /**
@@ -26,8 +27,9 @@ public class Chu_Quan extends javax.swing.JFrame {
     
     public Chu_Quan() {
         initComponents();
-    }
 
+    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -548,20 +550,19 @@ public class Chu_Quan extends javax.swing.JFrame {
         bg_cafe_cake.setBackground(new java.awt.Color(54, 33, 89));
 
         image_cafe_cake.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        image_cafe_cake.setIcon(new javax.swing.ImageIcon("F:\\document\\Do_an_PTTK\\src\\Doan\\images\\chuquan\\quan_càe.png")); // NOI18N
 
         javax.swing.GroupLayout bg_cafe_cakeLayout = new javax.swing.GroupLayout(bg_cafe_cake);
         bg_cafe_cake.setLayout(bg_cafe_cakeLayout);
         bg_cafe_cakeLayout.setHorizontalGroup(
             bg_cafe_cakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bg_cafe_cakeLayout.createSequentialGroup()
-                .addContainerGap(158, Short.MAX_VALUE)
+                .addContainerGap(758, Short.MAX_VALUE)
                 .addComponent(image_cafe_cake)
                 .addGap(112, 112, 112))
         );
         bg_cafe_cakeLayout.setVerticalGroup(
             bg_cafe_cakeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(image_cafe_cake, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(image_cafe_cake, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
         );
 
         bg_chuquan.add(bg_cafe_cake, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 870, 420));

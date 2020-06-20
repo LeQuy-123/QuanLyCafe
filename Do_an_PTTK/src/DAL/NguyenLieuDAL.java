@@ -94,10 +94,7 @@ public class NguyenLieuDAL {
             while (rs.next()){
                 ngLieu_DTO.setMaNL(rs.getInt("MANL"));
                 ngLieu_DTO.setTenNL(rs.getString("TENNL"));
-                //ngLieu_DTO.setHSD(rs.getString("HSD"));
                 ngLieu_DTO.setSlCon(rs.getInt("SLCON"));
-                
-                //listMenu.add(menu_DTO);
             }
             
         } catch (SQLException ex) {
@@ -107,6 +104,19 @@ public class NguyenLieuDAL {
 }
     public boolean updateNguyenLieu(int maNL, String tenNL, String hsd, int slCon, String congDung ){
         String sql = "update NGUYENLIEU set TENNL = '"+tenNL+"', HSD = TO_DATE ('"+hsd+"','dd/mm/yyyy'), SLCON = '"+slCon+"', congDung = '"+congDung+"'where MANL = '"+maNL+"'";
+        Statement statement;
+        try {
+            statement = conectionJDBC().createStatement();
+            statement.executeUpdate(sql);
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(NguyenLieuDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    } 
+    public boolean truNguyenLieu(String maNL, int slCon){
+        String sql = "UPDATE NGUYENLIEU SET SLCON = "+slCon + " WHERE MANL =" + maNL;
         Statement statement;
         try {
             statement = conectionJDBC().createStatement();

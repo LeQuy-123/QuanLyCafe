@@ -553,7 +553,6 @@ public class TaoHD_NV_GUI extends javax.swing.JFrame {
         if(check.equals("0"))
         {
             JOptionPane.showMessageDialog(null,"Số lượng phải lớn hơn 0 !", "Thông báo",JOptionPane.NO_OPTION);
-            return;
         }
         else
         {
@@ -595,12 +594,10 @@ public class TaoHD_NV_GUI extends javax.swing.JFrame {
 
                 this.cb_makh.setEnabled(false);
                 this.cb_maban.setEnabled(false);
-                return;
             }
             else
             {
-                JOptionPane.showMessageDialog(null,"Thêm hóa đơn mới, cthd không thành công !", "Thông báo",JOptionPane.NO_OPTION);
-                return;
+                JOptionPane.showMessageDialog(null,"Thêm hóa đơn mới, cthd không thành công hoặc ko đủ nguyên liêu, vui lòng kiểm tra !", "Thông báo",JOptionPane.NO_OPTION);
             }
         }
     }//GEN-LAST:event_bt_themActionPerformed

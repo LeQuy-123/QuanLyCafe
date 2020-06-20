@@ -20,6 +20,9 @@ public class ThucDonBLL {
     public boolean addmenu(int MANL, String TENMON, int GIA){
         return menuDAL.addMenu(MANL, TENMON, GIA);
     }
+    public ArrayList<String> loadDataToCombobox(){
+        return menuDAL.loadDataToCombobox();
+    }
     public boolean removeMon(String MAMON){
         return removeMon(MAMON);
     }

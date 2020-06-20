@@ -51,8 +51,10 @@ public class DangNhapGUI extends javax.swing.JFrame {
      */
     public DangNhapGUI() {
         initComponents();
+        Text_user.setText("mailan");
+        Text_password.setText("12345678");
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,6 +125,11 @@ public class DangNhapGUI extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 Text_userFocusLost(evt);
+            }
+        });
+        Text_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Text_userActionPerformed(evt);
             }
         });
         username.add(Text_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 273, 30));
@@ -353,7 +360,7 @@ public class DangNhapGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_button_backActionPerformed
 
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
-        // TODO add your handling code here:
+        bienTam.tentk = Text_user.getText();
         XuLyDangNhap();
     }//GEN-LAST:event_button_loginActionPerformed
 
@@ -401,6 +408,10 @@ public class DangNhapGUI extends javax.swing.JFrame {
             Text_password.setForeground(new Color(204,204,204));
         }
     }//GEN-LAST:event_Text_passwordFocusLost
+
+    private void Text_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Text_userActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Text_userActionPerformed
 
     /**
      * @param args the command line arguments

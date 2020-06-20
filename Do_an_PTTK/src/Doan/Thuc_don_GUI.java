@@ -8,7 +8,7 @@ package Doan;
 import BLL.ThucDonBLL;
 import DAL.ThucDonDAL;
 import DTO.ThucDonDTO;
-
+import Doan.NV_thungan;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -39,16 +39,16 @@ public class Thuc_don_GUI extends javax.swing.JFrame {
         loadCombobox();
     }
     private void loadCombobox(){
-        ThucDonDAL dal = new ThucDonDAL();
-        ArrayList<String> list = dal.loadDataToCombobox();
+        ThucDonBLL bll = new ThucDonBLL();
+        ArrayList<String> list = bll.loadDataToCombobox();
         for (String item : list){
             jComboBox1.addItem(item.toString());
         }
     }
     private void showMenu(){
         
-        ThucDonDAL menuDAL = new ThucDonDAL();
-        ArrayList<ThucDonDTO>  listMenu = menuDAL.getAllThucDon();
+        ThucDonBLL bll = new ThucDonBLL();
+        ArrayList<ThucDonDTO>  listMenu = bll.getAllThucDon();
         
         tableModel.setRowCount(0);
         
@@ -57,6 +57,7 @@ public class Thuc_don_GUI extends javax.swing.JFrame {
             );
     }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -406,7 +407,8 @@ public class Thuc_don_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_button_thoatActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        new Thuc_don_GUI().setVisible(true);
+        this.showMenu();
+        return;
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -417,11 +419,12 @@ public class Thuc_don_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnThemMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMonActionPerformed
-        ThucDonDAL menuDAL = new ThucDonDAL();
+        ThucDonBLL bll = new ThucDonBLL();
         String value = jComboBox1.getSelectedItem().toString();
         if(
-        menuDAL.addMenu(Integer.parseInt(value), tfTenMon.getText(), Integer.parseInt(tfGia.getText()))){
+        bll.addmenu(Integer.parseInt(value), tfTenMon.getText(), Integer.parseInt(tfGia.getText()))){
             JOptionPane.showMessageDialog(rootPane, "success");
+            this.showMenu();
         }
         else{
             JOptionPane.showMessageDialog(rootPane, "error");
@@ -431,8 +434,8 @@ public class Thuc_don_GUI extends javax.swing.JFrame {
     private void btnXoaMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaMonActionPerformed
         int x = tblMenu.getSelectedRow();
         String maMon = tblMenu.getValueAt(x, 0).toString();
-        ThucDonDAL dal = new ThucDonDAL();
-        if(dal.removeMon(maMon)){
+        ThucDonBLL bll = new ThucDonBLL();
+        if(bll.removeMon(maMon)){
             JOptionPane.showMessageDialog(rootPane, "success");
             new Thuc_don_GUI().setVisible(true);
         }
@@ -451,6 +454,7 @@ public class Thuc_don_GUI extends javax.swing.JFrame {
         if(bll.updateMon(Integer.parseInt(maNL), tenMon, Integer.parseInt(gia), Integer.parseInt(maMon))){
             JOptionPane.showMessageDialog(rootPane, "success");
             new Thuc_don_GUI().setVisible(true);
+            this.setVisible(false);
             //new Thuc_don_GUI().setVisible(true);
         }
         else{

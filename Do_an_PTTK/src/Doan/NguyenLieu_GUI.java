@@ -29,8 +29,8 @@ public class NguyenLieu_GUI extends javax.swing.JFrame {
     }
     
     private void showNL(){
-        NguyenLieuDAL dal = new NguyenLieuDAL();
-        ArrayList<NguyenLieuDTO>  listNL = dal.getAllNguyenLieu();
+        NguyenLieuBLL bll = new NguyenLieuBLL();
+        ArrayList<NguyenLieuDTO>  listNL = bll.getAllNguyenLieu();
         
         tableModel.setRowCount(0);
         
@@ -374,7 +374,8 @@ public class NguyenLieu_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        new NguyenLieu_GUI().setVisible(true);
+        this.showNL();
+        return;
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void button_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_thoatActionPerformed
@@ -392,8 +393,8 @@ public class NguyenLieu_GUI extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         try {
-            NguyenLieuDAL nguyenlieuDAL = new NguyenLieuDAL();
-            if (nguyenlieuDAL.addNguyenLieu(txtNl.getText(), txtHsd.getText(), Integer.parseInt(txtSlc.getText()), txtCd.getText())) {
+            NguyenLieuBLL bll = new NguyenLieuBLL();
+            if (bll.addNguyenLieu(txtNl.getText(), txtHsd.getText(), Integer.parseInt(txtSlc.getText()), txtCd.getText())) {
                 JOptionPane.showMessageDialog(rootPane, "success");
                 new NguyenLieu_GUI().setVisible(true);
             } else {
@@ -410,8 +411,8 @@ public class NguyenLieu_GUI extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int x = tblNguyenLieu.getSelectedRow();
         String maMon = tblNguyenLieu.getValueAt(x, 0).toString();
-        NguyenLieuDAL dal = new NguyenLieuDAL();
-        if(dal.removeNL(maMon)){
+        NguyenLieuBLL bll = new NguyenLieuBLL();
+        if(bll.removeNL(maMon)){
             JOptionPane.showMessageDialog(rootPane, "success");
             new NguyenLieu_GUI().setVisible(true);
         }
@@ -437,9 +438,10 @@ public class NguyenLieu_GUI extends javax.swing.JFrame {
         String slCon = txtSlc.getText();
         String congDung = txtCd.getText();
         JOptionPane.showMessageDialog(rootPane, "Bạn có chắc sẽ cập nhật?", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        if (bll.updateNguyenLieu(x, tenNL, hsd, Integer.parseInt(slCon), congDung)){
+        if (bll.updateNguyenLieu(Integer.parseInt(maNL), tenNL, hsd, Integer.parseInt(slCon), congDung)){
             JOptionPane.showMessageDialog(rootPane, "success");
             new NguyenLieu_GUI().setVisible(true);
+            this.setVisible(false);
         }
         else{
             JOptionPane.showMessageDialog(rootPane, "error");

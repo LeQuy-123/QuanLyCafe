@@ -22,7 +22,7 @@ public class DangNhapNVDAL {
        try {
             PreparedStatement pst;
             DangNhapDTO account = null;
-            String sql = "select TENTK, MK, ROLE from doAn.TAIKHOAN where ROLE=0 and upper(TENTK) = upper('" + TenTK + "') and MK='" + MK+"'";
+            String sql = "select TENTK, MK, ROLE from TAIKHOAN where ROLE=0 and upper(TENTK) = upper('" + TenTK + "') and MK='" + MK+"'";
             ResultSet rs = conectionJDBC().createStatement().executeQuery(sql);
             if (rs.next()) {
                 account = new DangNhapDTO();

@@ -246,4 +246,16 @@ public class NhanVienDAL {
         }
         return null;
     }
+    public int getMaNV(String TenTK){
+        String sql = "select MANV from NHANVIEN where TENTK = '"+TenTK+"'";
+        ResultSet rs = Database.getData(conectionJDBC(), sql);
+        try {
+            while(rs.next())
+                return rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return 0;
+    }
 }
+

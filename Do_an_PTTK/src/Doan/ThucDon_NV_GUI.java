@@ -5,6 +5,11 @@
  */
 package Doan;
 
+import BLL.ThucDonBLL;
+import DTO.ThucDonDTO;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MSI2
@@ -16,8 +21,10 @@ public class ThucDon_NV_GUI extends javax.swing.JFrame {
      */
     public ThucDon_NV_GUI() {
         initComponents();
+        tableModel = (DefaultTableModel) tblThucDon.getModel();
+        showMenu();
     }
-
+    DefaultTableModel tableModel;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +47,7 @@ public class ThucDon_NV_GUI extends javax.swing.JFrame {
         text_cafeomely1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblThucDon = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
 
@@ -134,7 +141,7 @@ public class ThucDon_NV_GUI extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(85, 65, 118));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblThucDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -146,7 +153,7 @@ public class ThucDon_NV_GUI extends javax.swing.JFrame {
                 "Mã món", "Tên món", "Giá"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblThucDon);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 930, 310));
 
@@ -184,7 +191,18 @@ public class ThucDon_NV_GUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    private void showMenu(){
+        
+        ThucDonBLL bll = new ThucDonBLL();
+        ArrayList<ThucDonDTO>  listMenu = bll.getAllThucDon();
+        
+        tableModel.setRowCount(0);
+        
+        for(ThucDonDTO s : listMenu){
+            tableModel.addRow(new Object[]{s.getMaMon(), s.getTenMon(), s.getGia()}
+            );
+    }
+    }
     private void button_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_thoatActionPerformed
         // TODO add your handling code here:
         new NV_thungan().setVisible(true);
@@ -243,7 +261,7 @@ public class ThucDon_NV_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblThucDon;
     private javax.swing.JLabel text_cafeomely;
     private javax.swing.JLabel text_cafeomely1;
     private javax.swing.JLabel text_trangchu7;

@@ -10,4 +10,5 @@ package Doan;
  */
 public class bienTam {
     static int a;
+    static String tentk;
 }

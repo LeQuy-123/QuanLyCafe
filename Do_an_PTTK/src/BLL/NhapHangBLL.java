@@ -27,4 +27,22 @@ public class NhapHangBLL {
     public ArrayList<String> getNCC(int maNCC){
         return dal.getNhaCungCap(maNCC);
     }
+    public ArrayList<String> getMaHangToCB(){
+        return dal.loadDataToCbMaHang();
+    }
+    public boolean nhapMotDonHang(int maNV, int maHang, int soLuongNhap){
+        return dal.nhapMotDonHang(maNV, maHang,soLuongNhap);
+    } 
+    public boolean updateHangHoa(int maHang, int soLuong, int thanhTien){
+        return dal.updateHangHoa(maHang, soLuong, thanhTien);
+    }
+    public ArrayList<String> getInfoHangHoa(int maHang){
+        return dal.getInfoHangHoa(maHang);
+    }
+    public boolean removeNH(String maCTN){
+        return dal.removeNH(maCTN);
+    }
+    public boolean updateNH(String maCTN, String soLuongNhap, String soLuongNhapCu){
+        return dal.updateNH(maCTN, soLuongNhap, soLuongNhapCu);
+    }
 }

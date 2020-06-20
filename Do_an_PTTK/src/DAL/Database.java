@@ -22,8 +22,8 @@ public class Database {
     
     static private String hostname = "localhost";
     static private String SID = "orcl";
-    static private String username = "doAn";
-    static private String password = "admin";
+    static private String username = "quy";
+    static private String password = "quy123";
     
     public static Connection conectionJDBC() //Ket noi oracle
     {
@@ -31,8 +31,8 @@ public class Database {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection("jdbc:oracle:thin:@" + hostname + ":1521:" + SID, username, password);
             return con; //ket noi thanh cong
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Kết nối thất bại");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Kết nối thất bại");
         }
         return null; //ket noi khong thanh cong
     }
